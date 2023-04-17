@@ -11,4 +11,4 @@ echo -e "bonjour, cette machine est fin prête pour scripter... \n Script shell 
 
 echo "recherche de mise à jour "
 
-#apt upate
+apt upate
