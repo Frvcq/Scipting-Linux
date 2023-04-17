@@ -4,9 +4,10 @@
 
 #MAIN
 #chemin du répertoire courant
-rep=$PWD
+rep=$1
 #.txt
-ext="*.txt"
+ext="*"
+ext=$ext$2
 #Afficher répertoire de travail rep
 echo "repertoire de travail: ${rep}"
 #Afficher fichiers pouvant être traités et Afficher la liste des fichiers de rep ayant pour extension txt
