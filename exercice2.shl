@@ -1,4 +1,6 @@
 #!/bin/bash
+#Indique le  chemin du  fichier dans    lequel est  stocké l’historique des   commandes saisies dans    votreShell    courant? -> ~/.bash_history
+#Indique ou vous pouvez enregistrer vos  scripts Shell afin qu’ils puissent être appelés sans en indiquer le  chemin? $PATH
 
 #MAIN
 #chemin du répertoire courant
