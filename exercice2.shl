@@ -14,7 +14,7 @@ echo "repertoire de travail: ${rep}"
 echo "fichier pouvant etre traite : $(find ${rep} -name ${ext})"
 #Afficher Quel fichier voulez-vous traiter ?
 #fic : reponse à la  question posée précédemment
-read -p "Quel fichier voulez-vous traiter" fic
+read -p "Quel fichier voulez-vous traiter  " fic
 #nblign -> nombre de  lignes de  fic
 nblign="$(wc -l ${fic})"
 #debut -> premières lignes de  fic
