@@ -1,0 +1,21 @@
+#!/bin/bash
+chemin_bash="/bin/bash"
+chemin_bashrc="/etc/bash.bashrc"
+chemin_manuel="/usr/bin/bash"
+liste_rep="$(ls)"
+
+
+echo -e "bonjour, cette machine est fin prête pour scripter... \n Script shell présent ici $PWD/$0 \n Voici la liste des scripts presents dans le repertoire courant : \n
+        $liste_rep \n Information relative à l'interpreteur bash : \n $BASH_VERSION  \n Chemin bash : $chemin_bash \n chemin_bashrc : $chemin_bashrc \n chemin manuel = $chemin_manuel"
+
+
+echo "recherche de mise à jour "
+
+    if apt update | grep -qE "bash" then;
+
+        echo "mise a jour de bash disponible"
+
+        else 
+
+        echo "bash est a jour"
+    fi
