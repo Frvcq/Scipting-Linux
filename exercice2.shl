@@ -1,0 +1,20 @@
+#!/bin/bash
+
+#MAIN
+#chemin du répertoire courant
+rep=$PWD
+#.txt
+ext="*.txt"
+#Afficher répertoire de travail rep
+echo "repertoire de travail: ${rep}"
+#Afficher fichiers pouvant être traités et Afficher la liste des fichiers de rep ayant pour extension txt
+echo "fichier pouvant etre traite : $(find ${rep} -name ${rep})"
+#Afficher Quel fichier voulez-vous traiter ?
+#fic : reponse à la  question posée précédemment
+read "Quel fichier voulez-vous traiter" fic
+#nblign -> nombre de  lignes de  fic
+nblign="$(wc -l ${fic})"
+#debut -> premières lignes de  fic
+debut="$(head ${fic})"
+#fin  -> dernières lignes de  fic
+fin="$(tail ${fic})"
