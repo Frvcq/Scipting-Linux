@@ -18,3 +18,13 @@ nblign="$(wc -l ${fic})"
 debut="$(head ${fic})"
 #fin  -> dernières lignes de  fic
 fin="$(tail ${fic})"
+#Afficher«CARACTERISTIQUES de fic»
+ls -l $PWD/$fic
+#Afficher« Nombre de lignes du fichier: nblign»
+echo -e "Nombre de lignes du fichier : \n ${nblign}"
+#Afficher «Début du fichier: »
+#Afficher debut
+echo -e "Debut du fichier : \n ${debut}"
+#Afficher «Fin du fichier: »
+#Afficher fin
+echo -e "Fin du fichier : \n ${fin}"
