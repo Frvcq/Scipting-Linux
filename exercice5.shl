@@ -1,0 +1,62 @@
+#!/bin/bash
+
+read -p "saisir l'identifiant : " identifiant poubelle
+
+    echo -e "--------------------------
+C - Créer le compte utilisateur \n
+M - Modifier le mot de passe de l'utilisateur \n
+S - Supprimer le compte utilisateur \n
+V - Vérifier si le compte utilisateur existe \n
+Q - quitter"
+
+
+while true; do
+    read -p "Votre choix : " rep poubelle
+
+    echo -e "--------------------------
+C - Créer le compte utilisateur \n
+M - Modifier le mot de passe de l'utilisateur \n
+S - Supprimer le compte utilisateur \n
+V - Vérifier si le compte utilisateur existe \n
+Q - quitter"
+
+    case $rep in
+
+    C)
+        create user $identifiant
+        read -p "Creation ok , entrez le mot de passe" password poubelle
+        passwd $password
+        ;;
+    M)
+        if id $identifiant; then
+
+            passwd $identifiant
+
+        else
+
+            echo "Utilisateur non existant, veuillez selectionner la creation"
+
+        fi
+
+        ;;
+    S)
+        echo "supression en cour"
+        deluser $identifiant
+        ;;
+    V)
+        if ! id $identifiant; then
+            echo "Utilisateur non existant, veuillez selectionner la creation"
+        else
+            echo "$identifiant existe"
+        fi
+        ;;
+    Q)
+        exit 0
+        ;;
+    *)
+        echo "Veuillez respecter les lettre du menu"
+        ;;
+
+    esac
+
+done
