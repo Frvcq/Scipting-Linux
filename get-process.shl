@@ -1,0 +1,33 @@
+#!/bin/bash
+#atelier number 4
+usage() {
+
+    echo "Usage : $0 <critere recherche> <nom (optionnel)>"
+    exit 3
+}
+
+critere_arg=$1
+nom_arg=$2
+
+#tant que critere_arg n'est pas remplis
+until [ $critere_arg == "" ]; do
+    read -p "Entrez un critere de recherche : " critere_arg
+    echo "-------------------------------------------"
+
+done
+
+if [ $nom_arg == ""]; then
+
+    nom_arg="$(whoami)"
+
+fi
+
+if [ $3 != "" ]; then
+
+    usage
+fi
+echo "Liste des processsus contenant $critere_arg"
+echo "-------------------------------------------"
+ps -aux $critere_arg
+
+echo "$(date +"%H:%M:%S")"
