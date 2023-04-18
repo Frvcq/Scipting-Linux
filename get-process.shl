@@ -10,24 +10,29 @@ critere_arg=$1
 nom_arg=$2
 
 #tant que critere_arg n'est pas remplis
-until [ -z $critere_arg  ]; do
+while [  "$critere_arg" = "" ]; do
+    echo "-------------------------------------------"
     read -p "Entrez un critere de recherche : " critere_arg
     echo "-------------------------------------------"
 
 done
 
-if [ -z $nom_arg ]; then
+if [[ "$nom_arg" = "" ]]; then
 
     nom_arg="$(whoami)"
 
+
 fi
 
-if [ -n $3 ]; then
+if [ "$3" != "" ]; then
 
-    usage
+  usage
+
 fi
+
 echo "Liste des processsus contenant $critere_arg"
 echo "-------------------------------------------"
-ps -aux $critere_arg
+#ps -ax --user=$nom_arg  | grep $critere_arg
+ps -aux | grep $critere_arg | grep $nom_arg
 
-echo "$(date +"%H:%M:%S")"
+echo "$(date +"%H:%M:%S")  FIN DE PROGRAMME"
