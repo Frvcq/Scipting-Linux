@@ -23,7 +23,7 @@ Q - quitter"
     case $rep in
 
     C)
-        uaseradd $identifiant
+        useradd $identifiant
         read -p "Creation ok , entrez le mot de passe" password poubelle
         passwd $password
         ;;
