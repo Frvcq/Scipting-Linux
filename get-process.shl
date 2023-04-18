@@ -30,7 +30,7 @@ if [ "$3" != "" ]; then
 
 fi
 
-echo "Liste des processsus contenant $critere_arg"
+echo "Liste des processsus contenant $critere_arg de $nom_arg"
 echo "-------------------------------------------"
 #ps -ax --user=$nom_arg  | grep $critere_arg
 ps -aux | grep $critere_arg | grep $nom_arg
