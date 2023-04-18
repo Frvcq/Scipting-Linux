@@ -6,6 +6,11 @@ usage() {
     exit 3
 }
 
+if [ "$#" -gt 2 ]; then
+
+  usage
+
+fi
 critere_arg=$1
 nom_arg=$2
 
@@ -24,11 +29,6 @@ if [[ "$nom_arg" = "" ]]; then
 
 fi
 
-if [ "$3" != "" ]; then
-
-  usage
-
-fi
 
 echo "Liste des processsus contenant $critere_arg de $nom_arg"
 echo "-------------------------------------------"
