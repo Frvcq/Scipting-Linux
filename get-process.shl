@@ -12,7 +12,7 @@ nom_arg=$2
 #tant que critere_arg n'est pas remplis
 while [  "$critere_arg" = "" ]; do
     echo "-------------------------------------------"
-    read -p "Entrez un critere de recherche : " critere_arg
+    read -p "Entrez un critere de recherche : " critere_arg poubelle
     echo "-------------------------------------------"
 
 done
