@@ -24,8 +24,7 @@ Q - quitter"
 
     C)
         useradd $identifiant
-        read -p "Creation ok , entrez le mot de passe" password poubelle
-        passwd $password
+        passwd $identifiant
         ;;
     M)
         if id $identifiant; then
