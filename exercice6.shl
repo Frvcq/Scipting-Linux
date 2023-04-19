@@ -1,0 +1,73 @@
+#!/bin/bash
+usage() {
+
+    echo "uage : $0 <pattenr> <nb_compte(1 si rien renseigne)>"
+
+    exit 1
+
+}
+case $# in
+
+    0)
+    read -p "base   du  nom  des   identifiants à générer " identifiant poubelle
+    read -p "nombre de  compte a creer " nb_compte poubelle
+    while [[ "$nb_compte" -le 1 ]]; do
+
+        read -p "nombre de  compte a creer " nb_compte poubelle
+
+    done
+
+    read -p "numero de debut " num_debut poubelle
+
+    while [[ "$num_debut" -le 0 ]]; do
+
+        read -p "numero de debut " num_debut poubelle
+
+    done
+
+    for ((i = $num_debut; i < $nb_compte; i++)); do
+        identifiant_final=$identifiant$i
+        echo "/////////////"
+        echo "creation du compte $identifiant_final"
+        useradd "$identifiant_final"
+        if  id $identifiant_final ; then
+
+            echo "$identifiant_final  -----> SUCCESS"
+
+        else
+
+            echo "$identifiant_final  -----> FAILED"
+
+        fi
+        echo "////////////"
+    done
+;;
+
+3)
+    identifiant=$1
+    nb_compte=$2
+    num_debut$3
+
+    for ((i = $num_debut; i < $nb_compte; i++)); do
+        identifiant_final=$identifiant$i
+        echo "/////////////"
+        echo "creation du compte $identifiant_final"
+        useradd "$identifiant_final"
+        if  id $identifiant_final ; then
+
+            echo "$identifiant_final  -----> SUCCESS"
+
+        else
+
+            echo "$identifiant_final  -----> FAILED"
+
+        fi
+        echo "////////////"
+    done
+
+;;
+
+*)
+
+usage
+;;
