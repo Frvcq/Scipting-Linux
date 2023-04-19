@@ -52,8 +52,8 @@ case $# in
         identifiant_final=$identifiant$i
         echo "/////////////"
         echo "creation du compte $identifiant_final"
-        useradd "$identifiant_final"
-        if  id $identifiant_final ; then
+        
+        if  useradd "$identifiant_final" ; then
 
             echo "$identifiant_final  -----> SUCCESS"
 
