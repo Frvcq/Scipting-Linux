@@ -46,7 +46,7 @@ case $# in
 3)
     identifiant=$1
     nb_compte=$2
-    num_debut$3
+    num_debut=$3
 
     for ((i = $num_debut; i < $nb_compte; i++)); do
         identifiant_final=$identifiant$i
