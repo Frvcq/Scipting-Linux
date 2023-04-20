@@ -22,6 +22,11 @@ creer_compte() {
             user="$(cat $fich_temp | awk '{print $1}')"
             user_home="$(cat $fich_temp | awk '{print $2}')"
             user_compile="$(cat $fich_temp | awk '{print $3}')"
+            if [ ! -z $user_compile];then
+
+            user_compile="/bin/bash"
+
+            fi
 
             useradd $user -d $user_home -s $user_compile
 
