@@ -29,6 +29,8 @@ creer_compte() {
             fi
 
             useradd $user -d $user_home -s $user_compile
+            password=$(rand -base64 8)
+            usermod --password $password $user
 
             if id $line; then
                 
