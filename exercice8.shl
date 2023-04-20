@@ -1,0 +1,113 @@
+#!/bin/bash
+fichier="/tmp/exercice8.account"
+usage() {
+
+    echo "uage : $0 <aucun arguement -> lis dans $fichier> || <pattern> <numo debut occurence> <nb_compte(1 si rien renseigne)>"
+
+    exit 1
+
+}
+
+creer_compte() {
+
+    identifiant=$1
+    num_debut=$2
+    nb_compte=$3
+
+    if [ $# -eq 0 ];then
+    
+        while read -r line; do
+
+            useradd "$line"
+
+            if id $line; then
+
+                echo "$line  -----> SUCCESS"
+
+            else
+
+                echo "$line  -----> FAILED"
+
+            fi
+
+        done <$fichier
+       
+
+    else
+
+         for ((i = $num_debut; i < $nb_compte + $num_debut; i++)); do
+            identifiant_final=$identifiant$i
+            echo "/////////////"
+            echo "creation du compte $identifiant_final"
+            useradd "$identifiant_final"
+            if id $identifiant_final; then
+
+                echo "$identifiant_final  -----> SUCCESS"
+
+            else
+
+                echo "$identifiant_final  -----> FAILED"
+
+            fi
+            echo "////////////"
+        done
+
+    fi
+
+}
+case $# in
+
+0)
+if [[ -s $fichier ] && [ $# -eq 0 ] && [ -f $fichier ]]; then
+
+creer_compte
+
+else
+
+
+
+    read -p "base   du  nom  des   identifiants à générer " identifiant poubelle
+    read -p "nombre de  compte a creer " nb_compte poubelle
+    while [[ "$nb_compte" -le 1 ]]; do
+
+        read -p "nombre de  compte a creer " nb_compte poubelle
+
+    done
+
+    read -p "numero de debut " num_debut poubelle
+
+    while [[ "$num_debut" -le 0 ]]; do
+
+        read -p "numero de debut " num_debut poubelle
+
+    done
+
+    creer_compte $identifiant $num_debut $nb_compte
+
+
+    fi
+
+    ;;
+
+3)
+    identifiant=$1
+    num_debut=$2
+    nb_compte=$3
+
+    if [[ "$nb_compte" -le 1 ]]; then
+        usage
+    fi
+    if [[ "$num_debut" -le 0 ]]; then
+        usage
+    fi
+
+    creer_compte $identifiant $num_debut $nb_compte
+
+    ;;
+
+*)
+
+    usage
+    ;;
+
+esac
