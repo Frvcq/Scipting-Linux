@@ -48,7 +48,7 @@ liste_save() {
 
         fi
 
-    done <$list_fic_shl
+    done <$list_saved
 
 }
 
