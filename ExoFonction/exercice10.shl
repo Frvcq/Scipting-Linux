@@ -1,1 +1,38 @@
 #!/bin/bash
+
+source function.func
+
+arg=$1
+user="$(whoami)"
+
+if [ $# -gt 1 ] ; then
+
+    usage
+
+fi
+
+#if [ ! -d "/home/$user/save"];then
+#mkdir -p "/home/$user/save"
+#fi
+
+case $arg in
+
+"save")
+    sauvegarder_save
+    ;;
+
+"liste")
+    liste_save
+    ;;
+
+"del")
+    supprimer_save
+
+    ;;
+
+*)
+
+    usage
+    ;;
+
+esac

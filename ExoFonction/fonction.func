@@ -1,0 +1,81 @@
+#10
+#balanceTonPetitDej
+
+usage() {
+
+    echo "$0 <save|liste|del>"
+
+    exit 1
+}
+sauvegarder_save() {
+    i="0"
+    list_fic_shl="/tmp/fic_save"
+    ls -l | awk '{print $9}' >$list_fic_shl
+
+    while read -r script_to_save; do
+
+        if echo $script_to_save | grep ".shl"; then
+            script_shl=$script_to_save
+            script_save="$(echo $script_to_save | sed 's/.shl/.save/g')"
+            echo_rouge $script_shl
+            echo_vert "/home/flavian/save/$script_save"
+            cp $script_shl "/home/flavian/save/$script_save"
+        fi
+
+    done <$list_fic_shl
+
+}
+
+liste_save() {
+# a terminser
+    list_fic_shl="/tmp/fic_save"
+    list_saved="/tmp/saved"
+
+    ls -l "/home/flavian/save" | awk '{print $9}' > $list_saved
+    ls -l | awk '{print $9}'> $list_fic_shl
+
+    while read -r script_to_list; do
+        script_to_list="$(echo $script_to_list | sed 's/.save/.shl/g')"
+        echo $script_to_list
+
+        if grep $script_to_list $list_fic_shl; then
+
+            echo_vert "$script_to_list  -----> savegarde"
+
+        else
+
+            echo_rouge "$script_to_list  -----> non savegarde"
+
+        fi
+
+    done <$list_fic_shl
+
+}
+
+supprimer_save() {
+
+    list_fic_shl="/tmp/fic_save"
+    ls -l | awk '{print $9}' >$list_fic_shl
+
+    while read -r script_to_del; do
+
+        rm -r ../save/{:$script_to_del:?}
+
+    done <$list_fic_shl
+
+}
+
+echo_rouge() {
+    texte=$1
+    ROUGE='\033[1;31m'
+    END='\033[0m'
+    echo ${ROUGE}${texte}${END}
+
+}
+
+echo_vert() {
+    texte=$1
+    VERT='\033[1;32'
+    END='\033[0m'
+    echo ${VERT}${texte}${END}
+}
