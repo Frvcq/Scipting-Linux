@@ -30,7 +30,8 @@ creer_compte() {
 
             useradd $user -d $user_home -s $user_compile
             password=$(rand -base64 8)
-            usermod --password $password $user
+            echo -e ($password\n$password) | (passwd $identifiant) > dev/null
+            passwd -e $identifiant
 
             if id $line; then
                 
